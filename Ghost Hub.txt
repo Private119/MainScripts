@@ -3440,7 +3440,7 @@ function UpdateData()
  end
  
  ---Get More Scripts From Github And Add to the data1 Table
- data2 = game.HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/Proximity352/MainScripts/refs/heads/main/Ghost%20Hub%20MoreScript.txt"))
+ data2 = game.HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/Private119/MainScripts/refs/heads/main/Ghost%20Hub%20MoreScript.txt"))
  if not data.Scripts then
     data["Scripts"] = {}
  end
