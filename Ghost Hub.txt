@@ -3428,9 +3428,7 @@ local data2
 
 ---Update Data Function
 function UpdateData()
- local URL = GhostHub_More_Database_URL
- local database = URL..".json"
- 
+ local database = GhostHub_More_Database_URL..".json"
  local CheckDatabase, Success = pcall(function()
  data = game.HttpService:JSONDecode(game:HttpGetAsync(database))
  end)
@@ -3497,13 +3495,11 @@ function GetMoreScript()
     end
     ---
     
-    while MoreScripts ~= 0 do
+    repeat
       if data.Scripts["Script"..MoreScripts] then
          local ScriptTitle = ""..data.Scripts["Script"..MoreScripts]["Script_Title"]
-         if MoreScriptSearch.Text == "" or MoreScriptSearch.Text ~= "" and ScriptTitle.find(string.lower(ScriptTitle), string.lower(MoreScriptSearch.Text)) then
-            if IsRestricted(data.Scripts["Script"..MoreScripts]["User_ID"]) == false then
-               AddMoreScriptButton(MoreScripts, ScriptTitle, data.Scripts["Script"..MoreScripts]["Script"], data.Scripts["Script"..MoreScripts]["Description"], data.Scripts["Script"..MoreScripts]["User_ID"], data.Scripts["Script"..MoreScripts].Username, data.Scripts["Script"..MoreScripts].Date)
-            end
+         if MoreScriptSearch.Text == "" or MoreScriptSearch.Text ~= "" and ScriptTitle.find(string.lower(ScriptTitle), string.lower(MoreScriptSearch.Text)) and IsRestricted(data.Scripts["Script"..MoreScripts]["User_ID"]) == false then
+            AddMoreScriptButton(MoreScripts, ScriptTitle, data.Scripts["Script"..MoreScripts]["Script"], data.Scripts["Script"..MoreScripts]["Description"], data.Scripts["Script"..MoreScripts]["User_ID"], data.Scripts["Script"..MoreScripts].Username, data.Scripts["Script"..MoreScripts].Date)
             MoreScripts -= 1
          elseif MoreScriptSearch.Text ~= "" and not ScriptTitle.find(string.lower(ScriptTitle), string.lower(MoreScriptSearch.Text)) then
             MoreScripts -= 1
@@ -3511,7 +3507,7 @@ function GetMoreScript()
       else
          MoreScripts -= 1
       end
-    end
+    until MoreScripts == 0
  end
 end
 ---
