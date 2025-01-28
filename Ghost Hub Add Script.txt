@@ -285,7 +285,7 @@ else
    
    ---Update Script ID in Database
    local Folder = "Current_Script_ID"
-   local database = GhostHub_More_Database_URL..Folder..".json"
+   local database = GhostHub_More_Database_URL..Folder..".json?auth="..Secret
    local request = request or syn.request
    local Table = {}
 
