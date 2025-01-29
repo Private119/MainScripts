@@ -3438,7 +3438,7 @@ function UpdateData()
  
  ---Get More Scripts From Github And Add to the data1 Table
  local CheckMoreScriptDB, Success = pcall(function()
- data2 = game.HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/Private119/MainScripts/refs/heads/main/Ghost%20Hub%20MoreScript.txt"))
+ data2 = game.HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Ghost%20Hub%20MoreScript.txt"))
  end)
  if not data.Scripts then
     data["Scripts"] = {}
