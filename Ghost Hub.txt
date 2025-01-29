@@ -242,7 +242,7 @@ ScrollingFrameMoreScript.BorderSizePixel = 0
 ScrollingFrameMoreScript.Position = UDim2.new(0.152,0,0.105)
 ScrollingFrameMoreScript.Size = UDim2.new(0.847,0,0.89)
 ScrollingFrameMoreScript.Active = true
-ScrollingFrameMoreScript.CanvasSize = UDim2.new(0, 0, 1000, 0)
+ScrollingFrameMoreScript.CanvasSize = UDim2.new(0, 0, 60, 0)
 ScrollingFrameMoreScript.ScrollBarThickness = 0
 ScrollingFrameMoreScript.Draggable = false
 ScrollingFrameMoreScript.Visible = false
@@ -262,7 +262,7 @@ MoreScriptSearch.BackgroundColor3 = Color3.new(0,0,0)
 MoreScriptSearch.BackgroundTransparency = 0
 MoreScriptSearch.Position = UDim2.new(0,0,0)
 MoreScriptSearch.TextColor3 = Color3.new(1,1,1)
-MoreScriptSearch.Size = UDim2.new(0.16,0,0.00005)
+MoreScriptSearch.Size = UDim2.new(0.16,0,0.00085)
 MoreScriptSearch.Font = Enum.Font.Merriweather
 MoreScriptSearch.FontSize = Enum.FontSize.Size14
 MoreScriptSearch.Text = ""
@@ -2573,7 +2573,7 @@ end
 
 ---Add MoreScript Button Function
 local MSButtonPosX = 0
-local MSButtonPosZ = 0.00006 
+local MSButtonPosZ = 0.001
 local MSButtonSlotNum = 0
 
 function AddMoreScriptButton(id, scriptname, script, description, userid, username, date, isPined, favoriteId)
@@ -2585,7 +2585,7 @@ function AddMoreScriptButton(id, scriptname, script, description, userid, userna
  MoreScriptButton.BorderColor3 = Color3.new(1,1,1)
  MoreScriptButton.Position = UDim2.new(MSButtonPosX, 0, MSButtonPosZ)
  MoreScriptButton.TextColor3 = Color3.new(1,1,1)
- MoreScriptButton.Size = UDim2.new(0.148,0,0.000135)
+ MoreScriptButton.Size = UDim2.new(0.148,0,0.00225)
  MoreScriptButton.Font = Enum.Font.Merriweather
  MoreScriptButton.FontSize = Enum.FontSize.Size10
  MoreScriptButton.Text = scriptname
@@ -2604,7 +2604,7 @@ function AddMoreScriptButton(id, scriptname, script, description, userid, userna
  if MSButtonSlotNum == 6 then
     MSButtonSlotNum = 0
     MSButtonPosX = 0
-    MSButtonPosZ += 0.00018
+    MSButtonPosZ += 0.003
  end
 end
 ---
@@ -3472,13 +3472,16 @@ function GetMoreScript()
  else
     MoreScripts = 10000
  end
+ local SlotLimit = 2022
+ local SlotUsed = 0
  MSButtonPosX = 0
- MSButtonPosZ = 0.00006
+ MSButtonPosZ = 0.001
  MSButtonSlotNum = 0
  
  if MoreScripts ~= 0 then
     if MoreScriptSearch.Text == "" and data["Current_Script_ID"] ~= nil and IsRestricted(game.Players.LocalPlayer.UserId) == false and IsInServer(game.Players.LocalPlayer.UserId) == true then
       AddMoreScriptButton(1, "Add Script", 'loadstring(game:HttpGet("https://ghostplayer352.github.io/ScriptAuthorization/"))()Ioad("b079081b560167c06ce3bce7c69d90b6")', "You can add your script using this script", "2568780515", "Admin", "Oct 29 2024") --This is for Add Script Button
+      SlotUsed += 1
     end
     
     ---Get Pined Script As for Highlights
@@ -3489,9 +3492,10 @@ function GetMoreScript()
          if favorites.Favorites["Script"..favoriteId] and data.Scripts["Script"..favorites.Favorites["Script"..favoriteId]["Script_ID"]] ~= nil then
             local favoritescriptId = favorites.Favorites["Script"..favoriteId]["Script_ID"]
             AddMoreScriptButton(favoritescriptId, data.Scripts["Script"..favoritescriptId]["Script_Title"], data.Scripts["Script"..favoritescriptId]["Script"], data.Scripts["Script"..favoritescriptId]["Description"], data.Scripts["Script"..favoritescriptId]["User_ID"], data.Scripts["Script"..favoritescriptId].Username, data.Scripts["Script"..favoritescriptId].Date, true, favoriteId)
+            SlotUsed += 1
          end
          favoriteId -= 1
-       until favoriteId == 0
+       until favoriteId == 0 or SlotUsed == SlotLimit
     end
     ---
     
@@ -3500,6 +3504,7 @@ function GetMoreScript()
          local ScriptTitle = ""..data.Scripts["Script"..MoreScripts]["Script_Title"]
          if MoreScriptSearch.Text == "" or MoreScriptSearch.Text ~= "" and ScriptTitle.find(string.lower(ScriptTitle), string.lower(MoreScriptSearch.Text)) and IsRestricted(data.Scripts["Script"..MoreScripts]["User_ID"]) == false then
             AddMoreScriptButton(MoreScripts, ScriptTitle, data.Scripts["Script"..MoreScripts]["Script"], data.Scripts["Script"..MoreScripts]["Description"], data.Scripts["Script"..MoreScripts]["User_ID"], data.Scripts["Script"..MoreScripts].Username, data.Scripts["Script"..MoreScripts].Date)
+            SlotUsed += 1
             MoreScripts -= 1
          elseif MoreScriptSearch.Text ~= "" and not ScriptTitle.find(string.lower(ScriptTitle), string.lower(MoreScriptSearch.Text)) then
             MoreScripts -= 1
@@ -3507,7 +3512,7 @@ function GetMoreScript()
       else
          MoreScripts -= 1
       end
-    until MoreScripts == 0
+    until MoreScripts == 0 or SlotUsed == SlotLimit
  end
 end
 ---
