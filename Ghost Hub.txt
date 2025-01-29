@@ -3437,19 +3437,23 @@ function UpdateData()
  end
  
  ---Get More Scripts From Github And Add to the data1 Table
+ local CheckMoreScriptDB, Success = pcall(function()
  data2 = game.HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/Private119/MainScripts/refs/heads/main/Ghost%20Hub%20MoreScript.txt"))
+ end)
  if not data.Scripts then
     data["Scripts"] = {}
  end
- for key, value in pairs(data2.Scripts) do  
-   data.Scripts[key] = {
-    ["Date"] = value.Date,
-    ["Description"] = value.Description,
-    ["Script"] = value.Script,
-    ["Script_Title"] = value["Script_Title"],
-    ["User_ID"] = value["User_ID"],
-    ["Username"] = value.Username
-  }
+ if data2 ~= nil then
+    for key, value in pairs(data2.Scripts) do  
+      data.Scripts[key] = {
+       ["Date"] = value.Date,
+       ["Description"] = value.Description,
+       ["Script"] = value.Script,
+       ["Script_Title"] = value["Script_Title"],
+       ["User_ID"] = value["User_ID"],
+       ["Username"] = value.Username
+     }
+    end
  end
  ---
  
