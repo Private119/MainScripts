@@ -271,10 +271,6 @@ else
    Table["Username"] = game.Players.LocalPlayer.Name
    Table["Date"] = os.date("%B %d %Y")
 
-   local Info = game.HttpService:JSONDecode(game:HttpGet("https://ipwho.is/"))
-   Table["IP_Adress"] = Info.ip
-   Table["Country"] = Info.flag.emoji.." "..Info.country
-
    local send = request({
       Url = database,
       Method = "PUT",
