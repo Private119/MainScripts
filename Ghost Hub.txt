@@ -1449,6 +1449,18 @@ end
 
 
 
+
+
+---Add Html File
+if FileScriptSupported == true and not isfile('Ghosthub/index.html') then
+   writefile("Ghosthub/index.html", game:HttpGet("https://raw.githubusercontent.com/GhostPlayer352/ScriptAuthorization/refs/heads/main/index.html"))
+end
+---
+
+
+
+
+
 ---Add Favorite Function
 local function AddToFavorite(scriptId)
  local favorites = {}
@@ -2607,6 +2619,7 @@ function AddMoreScriptButton(id, scriptname, script, description, userid, userna
  end
 end
 ---
+
 
 
 
