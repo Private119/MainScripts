@@ -83,7 +83,7 @@ end
 
 AddContent("TextButton", "Reveal All Symbols", [[
 for _, v in pairs(game.Players:GetPlayers()) do 
-  if v.Name ~= game.Players.LocalPlayer.Name then
+  if v.Name ~= game.Players.LocalPlayer.Name and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Collar") then
      local Message = v.Name.." you're "..DetectSymbol(game.Players[v.Name])
      if game:GetService("TextChatService").TextChannels.RBXGeneral then
         game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(Message)
@@ -142,7 +142,7 @@ game:GetService('RunService').RenderStepped:connect(function()
 if EspPlayerSymbols == true and EspPlayerSymbolsOperator == false and game.Players.LocalPlayer.Character:FindFirstChild("Collar") then
    EspPlayerSymbolsOperator = true
    for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-     if v ~= game:GetService("Players").LocalPlayer then
+     if v ~= game:GetService("Players").LocalPlayer and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Collar") then
         local PlayerSymbol = DetectSymbol(v)
         if v.Character.Head:FindFirstChild("Symbol Esp") then
            v.Character.Head:FindFirstChild("Symbol Esp"):Destroy()
