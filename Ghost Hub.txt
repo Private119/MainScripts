@@ -1220,6 +1220,7 @@ AddGameHubButton("Guess The Drawings!","loadstring(game:HttpGet('https://raw.git
 AddGameHubButton("Dance or Die","loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Dance%20or%20Die'))()")
 AddGameHubButton("Words or Die",'loadstring(game:HttpGet("https://ghostplayer352.github.io/ScriptAuthorization/"))()Ioad("9645c28a67e031371e4ca2e02f4f3b09")')
 AddGameHubButton("Math Murder",'loadstring(game:HttpGet("https://ghostplayer352.github.io/ScriptAuthorization/"))()Ioad("bee8432b10b76727a88e5815452851eb")')
+AddGameHubButton("Jack Of Hearts",'loadstring(game:HttpGet("https://ghostplayer352.github.io/ScriptAuthorization/"))()Ioad("b80d7e3c7537171e69f28aa0d5b7aff4")')
 ---
 
 
