@@ -1620,9 +1620,13 @@ AddMerch("https://www.roblox.com/catalog/72769340344464/White-Shirt", "White Shi
 AddMerch("https://www.roblox.com/catalog/86739754364385/White-Pants", "White Pants", 5)
 AddMerch("https://www.roblox.com/catalog/137611664036583/gyaru-vamp-gothic-swag-kawaii-soft-fairy-y2k-emo", "gyaru vamp gothic swag kawaii soft fairy y2k emo", 5)
 AddMerch("https://www.roblox.com/catalog/92656115819610/Supreme-Hoodie", "Supreme Hoodie", 5)
+AddMerch("https://www.roblox.com/catalog/82171477191268/Walter-White", "Walter White (+)", 5)
+AddMerch("https://www.roblox.com/catalog/78758247529710", "Classic Punk", 5)
+AddMerch("https://www.roblox.com/catalog/125602993311915", "🖤Revenge🖤SALE🖤", 5)
+AddMerch("https://www.roblox.com/catalog/139642423410848", "Kawaii Black Uniform", 5)
+AddMerch("https://www.roblox.com/catalog/92966113718197/Black-Gray-Plaid-School-Skirt", "Black Gray Plaid School Skirt", 5)
 AddMerch("https://www.roblox.com/catalog/122685893074039/chibi-girl-cute-pants", "chibi girl cute pants", 5)
-
-
+AddMerch("https://www.roblox.com/catalog/128282112681974", "Dress halloween - black model dahood vampire", 5)
 
 
 
