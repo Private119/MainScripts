@@ -23,6 +23,9 @@ local Credits3 = Instance.new("TextButton")
 local Credits4 = Instance.new("TextButton")
 local Credits5 = Instance.new("TextButton")
 local FrameShout = Instance.new("Frame")
+local FrameMerch = Instance.new("Frame")
+local MerchScrollingFrame = Instance.new("ScrollingFrame")
+local ActiveDatabases = false
 
 GhostGui.Parent = game.CoreGui
 
@@ -126,7 +129,7 @@ ButtonsFrame.BorderSizePixel = 0
 ButtonsFrame.Position = UDim2.new(0.001,0,0.109)
 ButtonsFrame.Size = UDim2.new(0.147,0,0.89)
 ButtonsFrame.Active = true
-ButtonsFrame.CanvasSize = UDim2.new(0, 0, 1.4, 0)
+ButtonsFrame.CanvasSize = UDim2.new(0, 0, 1.55, 0)
 ButtonsFrame.ScrollBarThickness = 0
 ButtonsFrame.Draggable = false
 ButtonsFrame.Visible = true
@@ -163,6 +166,7 @@ ScrollingFrameMoreScript.Visible = false
 FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameShout.Visible = false
+FrameMerch.Visible = false
 end)
 
 local Main = Home:Clone()
@@ -178,6 +182,7 @@ ScrollingFrameMoreScript.Visible = false
 FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameShout.Visible = false
+FrameMerch.Visible = false
 end)
 
 local GhostScript = Home:Clone()
@@ -191,6 +196,7 @@ FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameContent.Visible = true
 FrameShout.Visible = false
+FrameMerch.Visible = false
 FrameContent:ClearAllChildren()
 AddGhostScript1()
 end)
@@ -208,6 +214,7 @@ ScrollingFrameMoreScript.Visible = false
 FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameShout.Visible = false
+FrameMerch.Visible = false
 end)
 
 FrameGameHub.Parent = Frame
@@ -233,6 +240,7 @@ ScrollingFrameMoreScript.Visible = false
 FrameGameHub.Visible = true
 FrameCredits.Visible = false
 FrameShout.Visible = false
+FrameMerch.Visible = false
 end)
 
 ScrollingFrameMoreScript.Parent = Frame
@@ -293,6 +301,7 @@ FrameContent.Visible = false
 FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameShout.Visible = false
+FrameMerch.Visible = false
 end)
 
 FrameCredits.Parent = Frame
@@ -316,6 +325,7 @@ FrameCredits.Visible = true
 FrameGameHub.Visible = false
 ScrollingFrameMoreScript.Visible = false
 FrameShout.Visible = false
+FrameMerch.Visible = false
 end)
 
 FrameShout.Parent = Frame
@@ -339,6 +349,7 @@ FrameContent.Visible = false
 FrameCredits.Visible = false
 FrameGameHub.Visible = false
 ScrollingFrameMoreScript.Visible = false
+FrameMerch.Visible = false
 end)
 
 local Facts = Home:Clone()
@@ -354,6 +365,7 @@ FrameShout.Visible = false
 FrameCredits.Visible = false
 FrameGameHub.Visible = false
 ScrollingFrameMoreScript.Visible = false
+FrameMerch.Visible = false
 end)
 
 local Message = Home:Clone()
@@ -369,6 +381,7 @@ FrameShout.Visible = false
 FrameCredits.Visible = false
 FrameGameHub.Visible = false
 ScrollingFrameMoreScript.Visible = false
+FrameMerch.Visible = false
 end)
 
 local Executor = Home:Clone()
@@ -384,7 +397,71 @@ ScrollingFrameMoreScript.Visible = false
 FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameShout.Visible = false
+FrameMerch.Visible = false
 end)
+
+FrameMerch.Parent = Frame
+FrameMerch.BackgroundColor3 = Color3.new(0,0,0)
+FrameMerch.BorderColor3 = Color3.new(1,1,1)
+FrameMerch.BorderSizePixel = 0
+FrameMerch.Position = UDim2.new(0.152,0,0.105)
+FrameMerch.Size = UDim2.new(0.847,0.2,0.891)
+FrameMerch.Active = true
+FrameMerch.Visible = false
+
+MerchScrollingFrame.Parent = FrameMerch
+MerchScrollingFrame.BackgroundColor3 = Color3.new(0,0,0)
+MerchScrollingFrame.BorderColor3 = Color3.new(1,1,1)
+MerchScrollingFrame.BorderSizePixel = 0
+MerchScrollingFrame.Position = UDim2.new(0,0,0)
+MerchScrollingFrame.Size = UDim2.new(1,0,1)
+MerchScrollingFrame.Active = true
+MerchScrollingFrame.CanvasSize = UDim2.new(100, 0, 0, 0)
+MerchScrollingFrame.ScrollBarThickness = 0
+MerchScrollingFrame.Draggable = false
+MerchScrollingFrame.Visible = true
+
+local Merch = Home:Clone()
+Merch.Parent = ButtonsFrame
+Merch.Position = UDim2.new(0.05,0,0.908)
+Merch.Text = "Merch"
+
+Merch.MouseButton1Click:connect(function()
+FrameMerch.Visible = true
+FrameContent.Visible = false
+ScrollingFrameMoreScript.Visible = false
+FrameGameHub.Visible = false
+FrameCredits.Visible = false
+FrameShout.Visible = false
+end)
+
+
+
+
+---Buttons Operator Function
+local OperateButtonCurrentPosZ = 0.007
+local function OperateButton(button)
+ button.Position = UDim2.new(0.05,0,OperateButtonCurrentPosZ)
+ button.Size = UDim2.new(0.899,0,0.068)
+ OperateButtonCurrentPosZ += 0.0813
+end
+---
+
+OperateButton(Home)
+OperateButton(Main)
+OperateButton(GhostScript)
+OperateButton(Other)
+OperateButton(GameHub)
+OperateButton(MoreScript)
+OperateButton(Credits)
+OperateButton(Shout)
+OperateButton(Facts)
+OperateButton(Message)
+OperateButton(Executor)
+OperateButton(Merch)
+
+
+
 
 
 ---Admin Detector in Server
@@ -535,6 +612,20 @@ function RequestMessage(title,msg1,msg2)
 end
 ---
 
+
+
+---Detect if the executor support get a file
+local FileScriptSupported = false
+local FileScript, IsSupported = pcall(function()
+makefolder("Ghosthub") --make folder to detect the executor support the filescript
+end)
+
+if FileScript then
+  FileScriptSupported = true
+else
+  FileScriptSupported = false
+end
+---
 
 
 
@@ -696,7 +787,7 @@ Postal: "..Postal
   NationButtonPosZ += 0.00256
  end
  
- if UsersTable == nil then --Get data in Ghosthub Users database
+ if UsersTable == nil and ActiveDatabases == true then --Get data in Ghosthub Users database
     local UsersDatabase, IsActive = pcall(function()
     UsersTable = game.HttpService:JSONDecode(game:HttpGet(UsersURL..".json")) --get database to detect the database is active
     end)
@@ -1434,20 +1525,108 @@ end)
 
 
 
+---Add Merch Function
+local MerchCurrentPosZ = 0.0003
+local function AddMerch(link, name, price)
+ local assetId = tonumber(string.match(link, "%d+"))
+ 
+ local Frame = Instance.new("Frame")
+ Frame.Parent = MerchScrollingFrame
+ Frame.BackgroundColor3 = Color3.new(0,0,0)
+ Frame.BorderColor3 = Color3.new(1,1,1)
+ Frame.BorderSizePixel = 1
+ Frame.Position = UDim2.new(MerchCurrentPosZ,0,0.06)
+ Frame.Size = UDim2.new(0,130,0,190)
+ Frame.Active = false
 
+ local ImageFrame = Instance.new("Frame")
+ ImageFrame.Parent = Frame
+ ImageFrame.BackgroundColor3 = Color3.fromRGB(99,95,98)
+ ImageFrame.BorderColor3 = Color3.new(1,1,1)
+ ImageFrame.BorderSizePixel = 1
+ ImageFrame.Position = UDim2.new(0,0,0)
+ ImageFrame.Size = UDim2.new(1,0,0.5)
+ ImageFrame.Active = false
+ 
+ local Image = Instance.new("ImageButton")
+ Image.Parent = ImageFrame
+ Image.BackgroundTransparency = 1
+ Image.BorderSizePixel = 0
+ Image.Position = UDim2.new(0,0,0)
+ Image.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=48&height=48&assetId="..assetId
+ Image.Size = UDim2.new(1,1,1)
+ 
+ local Name = Instance.new("TextLabel")
+ Name.Parent = Frame
+ Name.BackgroundColor3 = Color3.new(0,0,0)
+ Name.BorderColor3 = Color3.new(1,1,1)
+ Name.BorderSizePixel = 1
+ Name.BackgroundTransparency = 0
+ Name.Position = UDim2.new(0,0,0.5)
+ Name.TextColor3 = Color3.new(1,1,1)
+ Name.Size = UDim2.new(1,0,0.1)
+ Name.Font = Enum.Font.Merriweather
+ Name.FontSize = Enum.FontSize.Size14
+ Name.Text = name
+ Name.TextScaled = true
+ Name.TextSize = 16
+ Name.TextWrapped = true
+ 
+ local Price = Name:Clone()
+ Price.Parent = Frame
+ Price.Position = UDim2.new(0,0,0.625)
+ Price.BackgroundTransparency = 1
+ Price.Font = Enum.Font.SourceSansBold
+ Price.Text = "Price: "..price.." Robux"
+ 
+ local Buy = Instance.new("TextButton")
+ Buy.Parent = Frame
+ Buy.BackgroundColor3 = Color3.fromRGB(31,128,29)
+ Buy.BorderColor3 = Color3.new(1,1,1)
+ Buy.BorderSizePixel = 1
+ Buy.BackgroundTransparency = 0
+ Buy.Position = UDim2.new(0.1,0,0.775)
+ Buy.TextColor3 = Color3.new(1,1,1)
+ Buy.Size = UDim2.new(0.8,0,0.15)
+ Buy.Font = Enum.Font.Merriweather
+ Buy.FontSize = Enum.FontSize.Size14
+ Buy.Text = "BUY"
+ Buy.TextScaled = true
+ Buy.TextSize = 16
+ Buy.TextWrapped = true
+ 
+ local UICorner = Instance.new("UICorner")
+ UICorner.CornerRadius = UDim.new(0.2, 0)
+ UICorner.Parent = Buy
 
----Detect if the executor support get a file
-local FileScriptSupported = false
-local FileScript, IsSupported = pcall(function()
-makefolder("Ghosthub") --make folder to detect the executor support the filescript
-end)
-
-if FileScript then
-  FileScriptSupported = true
-else
-  FileScriptSupported = false
+ Buy.MouseButton1Click:Connect(function()
+ local PurchasePrompt, IsEnable = pcall(function()
+ game:GetService("MarketplaceService"):PromptGamePassPurchase(game.Players.LocalPlayer, assetId)
+ end)
+ if not PurchasePrompt then
+    setclipboard(link)
+    RequestMessage("Script","Link Copied!")
+ end
+ end)
+ MerchCurrentPosZ += 0.0029
 end
 ---
+
+AddMerch("https://www.roblox.com/catalog/119676083682137/Santa-Claus-Shirt", "Santa Calus Shirt", 5)
+AddMerch("https://www.roblox.com/catalog/135221576666644/Santa-Claus-Pants", "Santa Claus Pants", 5)
+AddMerch("https://www.roblox.com/catalog/99331084793244/Gold-Tuxedo-Suit", "Gold Tuxedo Suit", 5)
+AddMerch("https://www.roblox.com/catalog/135040554647349/Gold-Tuxedo-Pants", "Gold Tuxedo Pants", 5)
+AddMerch("https://www.roblox.com/catalog/74232316018983/Prison-Shirt", "Prison Shirt", 5)
+AddMerch("https://www.roblox.com/catalog/98075520714720/Prison-Pants", "Prison Pants", 5)
+AddMerch("https://www.roblox.com/catalog/93578649387552/Squid-Game-Shirt", "Squid Game Shirt", 5)
+AddMerch("https://www.roblox.com/catalog/98597827787125/Squid-Game-Pants", "Squid Game Pants", 5)
+AddMerch("https://www.roblox.com/catalog/72769340344464/White-Shirt", "White Shirt", 5)
+AddMerch("https://www.roblox.com/catalog/86739754364385/White-Pants", "White Pants", 5)
+AddMerch("https://www.roblox.com/catalog/137611664036583/gyaru-vamp-gothic-swag-kawaii-soft-fairy-y2k-emo", "gyaru vamp gothic swag kawaii soft fairy y2k emo", 5)
+AddMerch("https://www.roblox.com/catalog/92656115819610/Supreme-Hoodie", "Supreme Hoodie", 5)
+AddMerch("https://www.roblox.com/catalog/122685893074039/chibi-girl-cute-pants", "chibi girl cute pants", 5)
+
+
 
 
 
@@ -1832,7 +2011,7 @@ end)
 
 local GetShoutData = false
 Shout.MouseButton1Down:Connect(function()
-if GetShoutData == false then
+if GetShoutData == false and ActiveDatabases == true then
    GetShoutData = true
    local CurrentShoutData, IsReady = game.HttpService:JSONDecode(game:HttpGet(GhostHub_Shout_Database_URL.."Shout.json"))
    if CurrentShoutData ~= nil then
@@ -1938,7 +2117,9 @@ local Ghosthub_Message_DB_Secret = "n2VqCON1NdrXu4UzyAnD48dpovKts50ofInn2FtF"
 ---Get Messages From Ghosthub Message Database
 local MessagesTable = nil
 local CheckMessages, hasMessage = pcall(function()
-MessagesTable = game.HttpService:JSONDecode(game:HttpGet(Ghosthub_Message_DB_URL..game.Players.LocalPlayer.Name..".json"))
+if ActiveDatabases == true then
+   MessagesTable = game.HttpService:JSONDecode(game:HttpGet(Ghosthub_Message_DB_URL..game.Players.LocalPlayer.Name..".json"))
+end
 end)
 ---
 
@@ -3553,6 +3734,8 @@ local function AddClick()
 end
 ---
 
-UpdateData()
-GetMoreScript()
-AddClick()
+if ActiveDatabases == true then
+   UpdateData()
+   GetMoreScript()
+   AddClick()
+end
