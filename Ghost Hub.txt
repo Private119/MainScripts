@@ -25,7 +25,7 @@ local Credits5 = Instance.new("TextButton")
 local FrameShout = Instance.new("Frame")
 local FrameMerch = Instance.new("Frame")
 local MerchScrollingFrame = Instance.new("ScrollingFrame")
-local ActiveDatabases = false
+local ActiveDatabases = true
 
 GhostGui.Parent = game.CoreGui
 
