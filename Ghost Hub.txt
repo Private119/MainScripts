@@ -281,13 +281,9 @@ MoreScriptSearch.TextScaled = false
 MoreScriptSearch.TextSize = 14
 MoreScriptSearch.TextWrapped = true
 
-local MoreScriptSearchTextBox = nil
-MoreScriptSearch.Changed:Connect(function()
-if MoreScriptSearch.Text ~= MoreScriptSearchTextBox then
-   MoreScriptSearchTextBox = MoreScriptSearch.Text
-   FrameMoreScript:ClearAllChildren()
-   GetMoreScript()
-end
+MoreScriptSearch.FocusLost:Connect(function()
+FrameMoreScript:ClearAllChildren()
+GetMoreScript()
 end)
 
 local MoreScript = Home:Clone()
