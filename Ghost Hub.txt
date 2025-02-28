@@ -2112,7 +2112,6 @@ end
 
 ---Ghosthub Message Database Important
 local Ghosthub_Message_DB_URL = "https://ghosthub-message-7900e-default-rtdb.firebaseio.com/"
-local Ghosthub_Message_DB_Secret = "n2VqCON1NdrXu4UzyAnD48dpovKts50ofInn2FtF"
 
 ---Get Messages From Ghosthub Message Database
 local MessagesTable = nil
@@ -2127,7 +2126,7 @@ end)
 ---Send Message Function
 local function SendMessage(username, msg)
  local Folder = username
- local database = Ghosthub_Message_DB_URL..Folder..".json?auth="..Ghosthub_Message_DB_Secret
+ local database = Ghosthub_Message_DB_URL..Folder..".json"
  local request = request or syn.request
  local Table = {}
 
@@ -2166,7 +2165,7 @@ end
 ---Delete Message Function
 local function DeleteMessage(messageId)
 if "Message"..MessagesTable["Messages"] ~= messageId then
-    local database = Ghosthub_Message_DB_URL..game.Players.LocalPlayer.Name.."/"..messageId..".json?auth="..Ghosthub_Message_DB_Secret
+    local database = Ghosthub_Message_DB_URL..game.Players.LocalPlayer.Name.."/"..messageId..".json"
     local request = request or syn.request
     local Table = {}
  
@@ -2177,7 +2176,7 @@ if "Message"..MessagesTable["Messages"] ~= messageId then
       Body = game.HttpService:JSONEncode(Table)
     })
  else
-    local database = Ghosthub_Message_DB_URL..game.Players.LocalPlayer.Name..".json?auth="..Ghosthub_Message_DB_Secret
+    local database = Ghosthub_Message_DB_URL..game.Players.LocalPlayer.Name..".json"
     local Table = {}
     
     local send = request({
