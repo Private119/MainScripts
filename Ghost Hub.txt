@@ -1738,8 +1738,8 @@ Settings_TextSizePlus.Position = UDim2.new(0.22,0,0.4)
 
 Settings_TextSizePlus.MouseButton1Click:Connect(function()
 Settings_TextSizeNum.Text = Settings_TextSizeNum.Text + 1
-if tonumber(Settings_TextSizeNum.Text) >= 21 then
-   Settings_TextSizeNum.Text = 20
+if tonumber(Settings_TextSizeNum.Text) >= 31 then
+   Settings_TextSizeNum.Text = 30
    RequestMessage("Script","Can't be morethan to 10")
 end
 ButtonTextSize = tonumber(Settings_TextSizeNum.Text)
