@@ -25,6 +25,7 @@ local Credits5 = Instance.new("TextButton")
 local FrameShout = Instance.new("Frame")
 local FrameMerch = Instance.new("Frame")
 local MerchScrollingFrame = Instance.new("ScrollingFrame")
+local FrameSettings = Instance.new("Frame")
 local ActiveDatabases = true
 
 GhostGui.Parent = game.CoreGui
@@ -129,7 +130,7 @@ ButtonsFrame.BorderSizePixel = 0
 ButtonsFrame.Position = UDim2.new(0.001,0,0.109)
 ButtonsFrame.Size = UDim2.new(0.147,0,0.89)
 ButtonsFrame.Active = true
-ButtonsFrame.CanvasSize = UDim2.new(0, 0, 1.55, 0)
+ButtonsFrame.CanvasSize = UDim2.new(0, 0, 1.65, 0)
 ButtonsFrame.ScrollBarThickness = 0
 ButtonsFrame.Draggable = false
 ButtonsFrame.Visible = true
@@ -167,6 +168,7 @@ FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameShout.Visible = false
 FrameMerch.Visible = false
+FrameSettings.Visible = false
 end)
 
 local Main = Home:Clone()
@@ -183,6 +185,7 @@ FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameShout.Visible = false
 FrameMerch.Visible = false
+FrameSettings.Visible = false
 end)
 
 local GhostScript = Home:Clone()
@@ -215,6 +218,7 @@ FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameShout.Visible = false
 FrameMerch.Visible = false
+FrameSettings.Visible = false
 end)
 
 FrameGameHub.Parent = Frame
@@ -241,6 +245,7 @@ FrameGameHub.Visible = true
 FrameCredits.Visible = false
 FrameShout.Visible = false
 FrameMerch.Visible = false
+FrameSettings.Visible = false
 end)
 
 ScrollingFrameMoreScript.Parent = Frame
@@ -298,6 +303,7 @@ FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameShout.Visible = false
 FrameMerch.Visible = false
+FrameSettings.Visible = false
 end)
 
 FrameCredits.Parent = Frame
@@ -322,6 +328,7 @@ FrameGameHub.Visible = false
 ScrollingFrameMoreScript.Visible = false
 FrameShout.Visible = false
 FrameMerch.Visible = false
+FrameSettings.Visible = false
 end)
 
 FrameShout.Parent = Frame
@@ -346,6 +353,7 @@ FrameCredits.Visible = false
 FrameGameHub.Visible = false
 ScrollingFrameMoreScript.Visible = false
 FrameMerch.Visible = false
+FrameSettings.Visible = false
 end)
 
 local Facts = Home:Clone()
@@ -362,6 +370,7 @@ FrameCredits.Visible = false
 FrameGameHub.Visible = false
 ScrollingFrameMoreScript.Visible = false
 FrameMerch.Visible = false
+FrameSettings.Visible = false
 end)
 
 local Message = Home:Clone()
@@ -378,6 +387,7 @@ FrameCredits.Visible = false
 FrameGameHub.Visible = false
 ScrollingFrameMoreScript.Visible = false
 FrameMerch.Visible = false
+FrameSettings.Visible = false
 end)
 
 local Executor = Home:Clone()
@@ -394,6 +404,7 @@ FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameShout.Visible = false
 FrameMerch.Visible = false
+FrameSettings.Visible = false
 end)
 
 FrameMerch.Parent = Frame
@@ -429,17 +440,42 @@ ScrollingFrameMoreScript.Visible = false
 FrameGameHub.Visible = false
 FrameCredits.Visible = false
 FrameShout.Visible = false
+FrameSettings.Visible = false
+end)
+
+FrameSettings.Parent = Frame
+FrameSettings.BackgroundColor3 = Color3.new(0,0,0)
+FrameSettings.BorderColor3 = Color3.new(1,1,1)
+FrameSettings.BorderSizePixel = 0
+FrameSettings.Position = UDim2.new(0.152,0,0.105)
+FrameSettings.Size = UDim2.new(0.847,0.2,0.891)
+FrameSettings.Active = true
+FrameSettings.Draggable = false
+FrameSettings.Visible = false
+
+local Settings = Home:Clone()
+Settings.Parent = ButtonsFrame
+Settings.Position = UDim2.new(0.05,0,0.908)
+Settings.Text = "Settings"
+
+Settings.MouseButton1Click:connect(function()
+FrameSettings.Visible = true
+FrameContent.Visible = false
+ScrollingFrameMoreScript.Visible = false
+FrameGameHub.Visible = false
+FrameCredits.Visible = false
+FrameShout.Visible = false
+FrameMerch.Visible = false
 end)
 
 
 
-
 ---Buttons Operator Function
-local OperateButtonCurrentPosZ = 0.007
+local OperateButtonCurrentPosZ = 0.006
 local function OperateButton(button)
  button.Position = UDim2.new(0.05,0,OperateButtonCurrentPosZ)
- button.Size = UDim2.new(0.899,0,0.068)
- OperateButtonCurrentPosZ += 0.0813
+ button.Size = UDim2.new(0.899,0,0.064)
+ OperateButtonCurrentPosZ += 0.0764
 end
 ---
 
@@ -455,7 +491,7 @@ OperateButton(Facts)
 OperateButton(Message)
 OperateButton(Executor)
 OperateButton(Merch)
-
+OperateButton(Settings)
 
 
 
@@ -625,6 +661,26 @@ end
 
 
 
+
+
+---Get Saved Settings Data
+local ButtonTextSize = 12
+
+local SettingsData = nil
+if FileScriptSupported == true and isfile("Ghosthub/.settings") then
+   SettingsData = game:GetService("HttpService"):JSONDecode(readfile("Ghosthub/.settings"))
+   
+   if SettingsData["icon_size"] then
+      OpenGui.Size = UDim2.new(0, SettingsData["icon_size"] * 20, 0, SettingsData["icon_size"] * 17)
+   end
+   if SettingsData["gui_size"] then
+      Frame.Size = UDim2.new(0, SettingsData["gui_size"] * 117.8 + 117.8, 0, SettingsData["gui_size"] * 48.4 + 48.4)
+   end
+   if SettingsData["text_size"] then
+      ButtonTextSize = SettingsData["text_size"]
+   end
+end
+---
 
 
 ---Show Home Function
@@ -898,9 +954,9 @@ function AddButton(name, posX, posZ, script)
  Button.FontSize = Enum.FontSize.Size14
  Button.Text = name
  Button.TextScaled = false
- Button.TextSize = 12
+ Button.TextSize = ButtonTextSize
  Button.TextWrapped = true
-
+ 
  Button.MouseButton1Click:Connect(function()
  loadstring(script)()
  end)
@@ -1121,17 +1177,17 @@ function AddOther1()
  AddButton("Tp Player Gui","0.33","0.29","loadstring(game:HttpGet('https://gist.githubusercontent.com/DagerFild/b4776075a0d26ef04394133ee6bd2081/raw/0ed51ac94057d2d9a9f00e1b037b9011c76ca54a/tpGUI', true))()")
  AddButton("R15 Animation Gui","0.48","0.29","loadstring(game:HttpGet('https://pastebin.com/raw/5HNpk2yN'))()")
  AddButton("Translator","0.63","0.29","loadstring(game:HttpGet('https://pastefy.app/xMRHE8Xd/raw'))()")
- AddButton("Fe Emotes","0.78","0.29","loadstring(game:HttpGet('https://pastebin.com/raw/Pxnx5bbx'))()")
+ AddButton("Fe Emotes","0.78","0.29",'loadstring(game:HttpGetAsync("https://gist.githubusercontent.com/RedZenXYZ/3da6af1961efa275de6c3c2a6dbace03/raw/bb027f99cec0ea48ef9c5eabfb9116ddff20633d/FE%2520Emotes%2520Gui"))()')
  AddButton("Animation Gui","0.03","0.49","loadstring(game:HttpGet('https://pastebin.com/raw/Rv4XeaBA'))()")
  AddButton("Fe Small","0.18","0.49","loadstring(game:HttpGet('https://pastebin.com/raw/iwBGSs0s'))()")
  AddButton("Punch Fling","0.33","0.49","loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe/main/obf_rf6iQURzu1fqrytcnLBAvW34C9N55kS9g9G3CKz086rC47M6632sEd4ZZYB0AYgV.lua.txt'),true))()")
  AddButton("Fe Yeet","0.48","0.49","loadstring(game:HttpGet('https://pastebin.com/raw/0uE8fzRY'))()")
  AddButton("Rejoin Button On Kick","0.63","0.49","loadstring(game:HttpGet('https://pastebin.com/raw/btg6ydMZ'))()")
  AddButton("Op Keyboard","0.78","0.49","loadstring(game:HttpGet('https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt', true))()")
- AddButton("Spectator","0.03","0.69","loadstring(game:HttpGet('https://pastebin.com/raw/wyvdb7gr'))()")
- AddButton("ShiftLock","0.18","0.69","loadstring(game:HttpGet('https://pastebin.com/raw/WQ9NPeDS'))()")
+ AddButton("Spectator","0.03","0.69","loadstring(game:HttpGet('https://pastebin.com/raw/daM0ut53'))()")
+ AddButton("ShiftLock","0.18","0.69","loadstring(game:HttpGet('https://pastefy.app/s9gaa6bc/raw'))()")
  AddButton("Tall Character","0.33","0.69","loadstring(game:HttpGet('https://pastebin.com/raw/xB8aWGsJ'))()")
- AddButton("Fe Ball (R15)","0.48","0.69","loadstring(game:HttpGet('https://pastebin.com/raw/rMMM3VpS'))()")
+ AddButton("Fe Ball (R15)","0.48","0.69","loadstring(game:HttpGet('https://pastebin.com/raw/BZr9bGDy'))()")
  AddButton("Wall Walking","0.63","0.69","loadstring(game:HttpGet('https://pastebin.com/raw/zXk4Rq2r'))()")
  AddButton("Fe Fly","0.78","0.69","loadstring(game:HttpGet('https://gist.githubusercontent.com/meozoneYT/bf037dff9f0a70017304ddd67fdcd370/raw/e14e74f425b060df523343cf30b787074eb3c5d2/arceus%2520x%2520fly%25202%2520obflucator'))()")
  AddPageButton("1","FrameContent:ClearAllChildren() AddOther2()")
@@ -1140,9 +1196,9 @@ end
 function AddOther2()
  AddButton("Dex Explorer","0.03","0.09","loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/main/Shadow%20Dex%20Explorer.txt'))()")
  AddButton("Touch Fling","0.18","0.09","loadstring(game:HttpGet('https://raw.githubusercontent.com/0Ben1/fe./main/Fling%20GUI'))()")
- AddButton("Flash Back","0.33","0.09","loadstring(game:HttpGet('https://pastebin.com/raw/cgWLwdN9', true))()")
+ AddButton("Flash Back","0.33","0.09",'loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe./main/L"))()')
  AddButton("Accessories Remover","0.48","0.09","loadstring(game:HttpGet('https://pastebin.com/raw/JHRfeCEi'))()")
- AddButton("Drone","0.63","0.09","loadstring(game:HttpGet('https://pastebin.com/raw/C5zDx7d8'))()")
+ AddButton("Drone","0.63","0.09","loadstring(game:HttpGet('https://pastebin.com/raw/mC6RLFTe'))()")
  AddButton("Esp MapHack","0.78","0.09","loadstring(game:HttpGet('https://pastebin.com/raw/BT2ckPxB'))()")
  AddButton("Player Collision","0.03","0.29","loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe/main/Collision.txt'),true))()")
  AddButton("Fake Tools","0.18","0.29","loadstring(game:HttpGet(('https://pastefy.app/VYIAk3o1/raw'),true))()")
@@ -1154,7 +1210,7 @@ function AddOther2()
  AddButton("Synapse Executor","0.18","0.49","loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/main/Synapse%20Executor%20(Source%20Code).txt'))()")
  AddButton("Player Lifter","0.33","0.49","loadstring(game:HttpGet('https://pastebin.com/raw/czWTLzF1'))()")
  AddButton("Admin Spy Gui","0.48","0.49","loadstring(game:HttpGet('https://raw.githubusercontent.com/MichaelScripter/MiniScript/main/Spy%20gui.lua'))()")
- AddButton("Telekinis v2","0.63","0.49","loadstring(game:HttpGet('https://pastebin.com/raw/hAJVRPBQ'))()")
+ AddButton("Telekinisis","0.63","0.49",'loadstring(game:HttpGet("https://rawscripts.net/raw/a-literal-baseplate.-FE-Telekinesis-15523"))()')
  AddButton("Freeze Button","0.78","0.49","loadstring(game:HttpGet('https://pastebin.com/raw/t0sVziwd'))()")
  AddButton("Lag Switch","0.03","0.69",'local CoreGui = game:GetService("StarterGui") CoreGui:SetCore("SendNotification", {Title = "Script",Text = "Press X to Active",Duration = 2.5,}) loadstring(game:HttpGet("https://paste.gg/p/anonymous/d3492bd620bd4c46b54680ac80b0fa0d/files/161ddd9c992c4ceba3c298458d45188a/raw", true))()')
  AddButton("Fling Gui","0.18","0.69","loadstring(game:HttpGet('https://pastebin.com/raw/LVaAkFcv'))()")
@@ -1170,7 +1226,7 @@ function AddOther3()
  AddButton("Freeze Gui","0.18","0.09","loadstring(game:HttpGet('https://raw.githubusercontent.com/creepstu/fuzzy-octo-giggle/main/Source'))()")
  AddButton("Fe Illusion","0.33","0.09","loadstring(game:HttpGet('https://raw.githubusercontent.com/0Ben1/fe/main/obf_11l7Y131YqJjZ31QmV5L8pI23V02b3191sEg26E75472Wl78Vi8870jRv5txZyL1.lua.txt'))()")
  AddButton("Player Bringer","0.48","0.09","loadstring(game:HttpGet(('https://pastebin.com/raw/VXq46irC'),true))()")
- AddButton("Aimbot Gui","0.63","0.09","loadstring(game:HttpGet('https://pastebin.com/raw/e7v4JMXD'))()")
+ AddButton("Aimbot Gui","0.63","0.09","loadstring(game:HttpGet('https://pastefy.app/EuhKbIsr/raw'))()")
  AddButton("Tool Animator","0.78","0.09","loadstring(game:HttpGet(('https://pastebin.com/raw/dkufMsdA'),true))()")
  AddButton("Tools Giver","0.03","0.29","loadstring(game:HttpGet(('https://pastefy.app/VYIAk3o1/raw'),true))()")
  AddButton("Fe Climb Walls","0.18","0.29","loadstring(game:HttpGet('https://raw.githubusercontent.com/0Ben1/fe/main/obf_E872F3ky4888TSVdj6Adgi1hSLtM038AyxVpTVw07QA3QUDcI3sxmuD869hYR4id.lua.txt'))()")
@@ -1180,7 +1236,7 @@ function AddOther3()
  AddButton("Fake Chat","0.78","0.29","loadstring(game:GetObjects('rbxassetid://1262435912')[1].Source)()")
  AddButton("Invisible Teleport Gui","0.03","0.49","loadstring(game:HttpGet('https://raw.githubusercontent.com/0Ben1/fe./dbb6ce6f6cee4f7a5c9e20d7b88e83db2a93bf25/Invisible%20GUI'))()")
  AddButton("Ignore ToucInterests","0.18","0.49","loadstring(game:HttpGet('https://raw.githubusercontent.com/zephyr10101/ignore-touchinterests/main/main',true))()")
- AddButton("Anti Afk Gui","0.33","0.49","loadstring(game:HttpGet('https://pastebin.com/raw/Yu12RUkY'))()")
+ AddButton("Anti Afk Gui","0.33","0.49","loadstring(game:HttpGet('https://pastebin.com/raw/TRCYuX46'))()")
  AddButton("Script Executor","0.48","0.49","loadstring(game:HttpGet('https://pastebin.com/raw/CFAfsC0b'))()")
  AddButton("Universal Esp Gui","0.63","0.49","loadstring(game:HttpGet(('https://pastebin.com/raw/XJswfPAc'),true))()")
  AddButton("Music Player Gui","0.78","0.49","loadstring(game:HttpGet('https://pastefy.app/rgyhjRLA/raw'))()")
@@ -1517,6 +1573,266 @@ RequestMessage("Script","Link Copied")
 setclipboard("https://youtube.com/channel/UChbZk_X9wQ_Xgh5GdL04TEA?si=12aeUt6PFF3e318M")
 end)
 ---
+
+
+
+
+
+
+
+---Settings Frame Contents
+local Settings_IconSize = Instance.new("TextButton")
+Settings_IconSize.Parent = FrameSettings
+Settings_IconSize.BackgroundColor3 = Color3.new(0,0,0)
+Settings_IconSize.BackgroundTransparency = 1
+Settings_IconSize.Position = UDim2.new(0.035,0,0.1)
+Settings_IconSize.TextColor3 = Color3.new(1,1,1)
+Settings_IconSize.Size = UDim2.new(0.15,0,0.1)
+Settings_IconSize.Font = Enum.Font.Merriweather
+Settings_IconSize.Text = "Icon Size"
+Settings_IconSize.TextXAlignment = Enum.TextXAlignment.Left
+Settings_IconSize.FontSize = Enum.FontSize.Size14
+Settings_IconSize.TextScaled = true
+Settings_IconSize.TextSize = 8
+Settings_IconSize.TextWrapped = true
+
+local Settings_IconSizeNum = Instance.new("TextBox")
+Settings_IconSizeNum.Parent = FrameSettings
+Settings_IconSizeNum.BackgroundColor3 = Color3.new(0,0,0)
+Settings_IconSizeNum.BorderColor3 = Color3.new(1,1,1)
+Settings_IconSizeNum.BorderSizePixel = 1
+Settings_IconSizeNum.BackgroundTransparency = 0
+Settings_IconSizeNum.Position = UDim2.new(0.274,0,0.1)
+Settings_IconSizeNum.Size = UDim2.new(0.05,0,0.1)
+Settings_IconSizeNum.TextColor3 = Color3.new(1,1,1)
+Settings_IconSizeNum.Text = 2
+Settings_IconSizeNum.TextScaled = true
+Settings_IconSizeNum.TextSize = 8
+Settings_IconSizeNum.TextWrapped = true
+
+Settings_IconSizeNum.FocusLost:Connect(function()
+Settings_IconSizeNum.Text = Settings_IconSizeNum.Text:gsub("[^%d%.]+", "")
+if Settings_IconSizeNum.Text == "" then
+   Settings_IconSizeNum.Text = 1
+end
+if tonumber(Settings_IconSizeNum.Text) <= 0 then
+   Settings_IconSizeNum.Text = 1
+end
+if tonumber(Settings_IconSizeNum.Text) >= 11 then
+   Settings_IconSizeNum.Text = 10
+end
+OpenGui.Size = UDim2.new(0, tonumber(Settings_IconSizeNum.Text) * 20, 0, tonumber(Settings_IconSizeNum.Text) * 17)
+end)
+
+local Settings_IconSizePlus = Settings_IconSize:Clone()
+Settings_IconSizePlus.Parent = FrameSettings
+Settings_IconSizePlus.BorderColor3 = Color3.new(1,1,1)
+Settings_IconSizePlus.BorderSizePixel = 1
+Settings_IconSizePlus.BackgroundTransparency = 0
+Settings_IconSizePlus.Position = UDim2.new(0.22,0,0.1)
+Settings_IconSizePlus.Size = UDim2.new(0.05,0,0.1)
+Settings_IconSizePlus.TextXAlignment = Enum.TextXAlignment.Center
+Settings_IconSizePlus.Text = "+"
+
+Settings_IconSizePlus.MouseButton1Click:Connect(function()
+Settings_IconSizeNum.Text = Settings_IconSizeNum.Text + 1
+if tonumber(Settings_IconSizeNum.Text) >= 11 then
+   Settings_IconSizeNum.Text = 10
+   RequestMessage("Script","Can't be morethan to 10")
+end
+OpenGui.Size = UDim2.new(0, tonumber(Settings_IconSizeNum.Text) * 20, 0, tonumber(Settings_IconSizeNum.Text) * 17)
+end)
+
+local Settings_IconSizeMinus = Settings_IconSizePlus:Clone()
+Settings_IconSizeMinus.Parent = FrameSettings
+Settings_IconSizeMinus.Position = UDim2.new(0.328,0,0.1)
+Settings_IconSizeMinus.Text = "-"
+
+Settings_IconSizeMinus.MouseButton1Click:Connect(function()
+Settings_IconSizeNum.Text = Settings_IconSizeNum.Text - 1
+if tonumber(Settings_IconSizeNum.Text) <= 0 then
+   Settings_IconSizeNum.Text = 1
+   RequestMessage("Script","Can't be lowerthan to 0")
+end
+OpenGui.Size = UDim2.new(0, tonumber(Settings_IconSizeNum.Text) * 20, 0, tonumber(Settings_IconSizeNum.Text) * 17)
+end)
+
+local Settings_GuiSize = Settings_IconSize:Clone()
+Settings_GuiSize.Parent = FrameSettings
+Settings_GuiSize.Position = UDim2.new(0.035,0,0.25)
+Settings_GuiSize.Text = "Gui Size"
+
+local Settings_GuiSizeNum = Settings_IconSizeNum:Clone()
+Settings_GuiSizeNum.Parent = FrameSettings
+Settings_GuiSizeNum.Position = UDim2.new(0.274,0,0.25)
+Settings_GuiSizeNum.Text = 4
+
+Settings_GuiSizeNum.FocusLost:Connect(function()
+Settings_GuiSizeNum.Text = Settings_GuiSizeNum.Text:gsub("[^%d%.]+", "")
+if Settings_GuiSizeNum.Text == "" then
+   Settings_GuiSizeNum.Text = 1
+end
+if tonumber(Settings_GuiSizeNum.Text) <= 0 then
+   Settings_GuiSizeNum.Text = 1
+end
+if tonumber(Settings_GuiSizeNum.Text) >= 11 then
+   Settings_GuiSizeNum.Text = 10
+end
+Frame.Size = UDim2.new(0, tonumber(Settings_GuiSizeNum.Text) * 117.8 + 117.8, 0, tonumber(Settings_GuiSizeNum.Text) * 48.4 + 48.4)
+end)
+
+local Settings_GuiSizePlus = Settings_IconSizePlus:Clone()
+Settings_GuiSizePlus.Parent = FrameSettings
+Settings_GuiSizePlus.Position = UDim2.new(0.22,0,0.25)
+
+Settings_GuiSizePlus.MouseButton1Click:Connect(function()
+Settings_GuiSizeNum.Text = Settings_GuiSizeNum.Text + 1
+if tonumber(Settings_GuiSizeNum.Text) >= 21 then
+   Settings_GuiSizeNum.Text = 20
+   RequestMessage("Script","Can't be morethan to 10")
+end
+Frame.Size = UDim2.new(0, tonumber(Settings_GuiSizeNum.Text) * 117.8 + 117.8, 0, tonumber(Settings_GuiSizeNum.Text) * 48.4 + 48.4)
+end)
+
+local Settings_GuiSizeMinus = Settings_IconSizeMinus:Clone()
+Settings_GuiSizeMinus.Parent = FrameSettings
+Settings_GuiSizeMinus.Position = UDim2.new(0.328,0,0.25)
+
+Settings_GuiSizeMinus.MouseButton1Click:Connect(function()
+Settings_GuiSizeNum.Text = Settings_GuiSizeNum.Text - 1
+if tonumber(Settings_GuiSizeNum.Text) <= 0 then
+   Settings_GuiSizeNum.Text = 1
+   RequestMessage("Script","Can't be lowerthan to 0")
+end
+Frame.Size = UDim2.new(0, tonumber(Settings_GuiSizeNum.Text) * 117.8 + 117.8, 0, tonumber(Settings_GuiSizeNum.Text) * 48.4 + 48.4)
+end)
+
+local Settings_TextSize = Settings_IconSize:Clone()
+Settings_TextSize.Parent = FrameSettings
+Settings_TextSize.Position = UDim2.new(0.035,0,0.4)
+Settings_TextSize.Size = UDim2.new(0.18,0,0.1)
+Settings_TextSize.Text = "Button Text Size"
+
+local Settings_TextSizeNum = Settings_IconSizeNum:Clone()
+Settings_TextSizeNum.Parent = FrameSettings
+Settings_TextSizeNum.Position = UDim2.new(0.274,0,0.4)
+Settings_TextSizeNum.Text = 12
+
+Settings_TextSizeNum.FocusLost:Connect(function()
+Settings_TextSizeNum.Text = Settings_TextSizeNum.Text:gsub("[^%d%.]+", "")
+if Settings_TextSizeNum.Text == "" then
+   Settings_TextSizeNum.Text = 1
+end
+if tonumber(Settings_TextSizeNum.Text) <= 0 then
+   Settings_TextSizeNum.Text = 1
+end
+if tonumber(Settings_TextSizeNum.Text) >= 11 then
+   Settings_TextSizeNum.Text = 10
+end
+ButtonTextSize = tonumber(Settings_TextSizeNum.Text)
+end)
+
+local Settings_TextSizePlus = Settings_IconSizePlus:Clone()
+Settings_TextSizePlus.Parent = FrameSettings
+Settings_TextSizePlus.Position = UDim2.new(0.22,0,0.4)
+
+Settings_TextSizePlus.MouseButton1Click:Connect(function()
+Settings_TextSizeNum.Text = Settings_TextSizeNum.Text + 1
+if tonumber(Settings_TextSizeNum.Text) >= 21 then
+   Settings_TextSizeNum.Text = 20
+   RequestMessage("Script","Can't be morethan to 10")
+end
+ButtonTextSize = tonumber(Settings_TextSizeNum.Text)
+end)
+
+local Settings_TextSizeMinus = Settings_IconSizeMinus:Clone()
+Settings_TextSizeMinus.Parent = FrameSettings
+Settings_TextSizeMinus.Position = UDim2.new(0.328,0,0.4)
+
+Settings_TextSizeMinus.MouseButton1Click:Connect(function()
+Settings_TextSizeNum.Text = Settings_TextSizeNum.Text - 1
+if tonumber(Settings_TextSizeNum.Text) <= 0 then
+   Settings_TextSizeNum.Text = 1
+   RequestMessage("Script","Can't be lowerthan to 0")
+end
+ButtonTextSize = tonumber(Settings_TextSizeNum.Text)
+end)
+
+local Settings_SaveButton = Settings_IconSizePlus:Clone()
+Settings_SaveButton.Parent = FrameSettings
+Settings_SaveButton.Position = UDim2.new(0.78,0,0.75)
+Settings_SaveButton.Size = UDim2.new(0.18,0,0.18)
+Settings_SaveButton.Text = "Save Settings"
+Settings_SaveButton.TextScaled = false
+Settings_SaveButton.TextSize = ButtonTextSize + 3
+Settings_SaveButton.TextWrapped = true
+
+Settings_SaveButton.MouseButton1Click:Connect(function()
+local settings_table = {}
+settings_table["icon_size"] = tonumber(Settings_IconSizeNum.Text)
+settings_table["gui_size"] = tonumber(Settings_GuiSizeNum.Text)
+settings_table["text_size"] = tonumber(Settings_TextSizeNum.Text)
+
+writefile("Ghosthub/.settings", game:GetService("HttpService"):JSONEncode(settings_table))
+RequestMessage("Script","Settings Saved!")
+end)
+
+local Settings_ResetButton = Settings_SaveButton:Clone()
+Settings_ResetButton.Parent = FrameSettings
+Settings_ResetButton.Position = UDim2.new(0.58,0,0.75)
+Settings_ResetButton.Text = "Reset Settings"
+
+Settings_ResetButton.MouseButton1Click:Connect(function()
+Settings_IconSizeNum.Text = 2
+Settings_GuiSizeNum.Text = 4
+Settings_TextSizeNum.Text = 12
+OpenGui.Size = UDim2.new(0, tonumber(Settings_IconSizeNum.Text) * 20, 0, tonumber(Settings_IconSizeNum.Text) * 17)
+Frame.Size = UDim2.new(0, tonumber(Settings_GuiSizeNum.Text) * 117.8 + 117.8, 0, tonumber(Settings_GuiSizeNum.Text) * 48.4 + 48.4)
+ButtonTextSize = tonumber(Settings_TextSizeNum.Text)
+end)
+
+if FileScriptSupported == false then
+   local Settings_FrameBarrier = Instance.new("Frame")
+   Settings_FrameBarrier.Parent = FrameSettings
+   Settings_FrameBarrier.BackgroundColor3 = Color3.new(0,0,0)
+   Settings_FrameBarrier.BorderColor3 = Color3.new(1,1,1)
+   Settings_FrameBarrier.BackgroundTransparency = 0.2
+   Settings_FrameBarrier.BorderSizePixel = 0
+   Settings_FrameBarrier.Position = UDim2.new(0,0,0)
+   Settings_FrameBarrier.Size = UDim2.new(1,1.2,1)
+   Settings_FrameBarrier.Active = true
+   Settings_FrameBarrier.Draggable = false
+    
+   local Settings_BarrierText = Instance.new("TextButton")
+   Settings_BarrierText.Parent = Settings_FrameBarrier
+   Settings_BarrierText.BackgroundColor3 = Color3.new(0,0,0)
+   Settings_BarrierText.BackgroundTransparency = 1
+   Settings_BarrierText.Position = UDim2.new(0.3,0,0.4)
+   Settings_BarrierText.TextColor3 = Color3.new(1,1,1)
+   Settings_BarrierText.Size = UDim2.new(0.4,0,0.1)
+   Settings_BarrierText.Font = Enum.Font.Merriweather
+   Settings_BarrierText.Text = "⚠️ Sorry your Executor is Not Supported this Feature!"
+   Settings_BarrierText.FontSize = Enum.FontSize.Size14
+   Settings_BarrierText.TextScaled = true
+   Settings_BarrierText.TextSize = 18
+   Settings_BarrierText.TextWrapped = false
+end
+
+if SettingsData["icon_size"] then
+   Settings_IconSizeNum.Text = SettingsData["icon_size"]
+end
+if SettingsData["gui_size"] then
+   Settings_GuiSizeNum.Text = SettingsData["gui_size"]
+end
+if SettingsData["text_size"] then
+   Settings_TextSizeNum.Text = SettingsData["text_size"]
+end
+---
+
+
+
+
+
 
 
 
@@ -2774,7 +3090,7 @@ function AddMoreScriptButton(id, scriptname, script, description, userid, userna
  MoreScriptButton.FontSize = Enum.FontSize.Size10
  MoreScriptButton.Text = scriptname
  MoreScriptButton.TextScaled = false
- MoreScriptButton.TextSize = 12
+ MoreScriptButton.TextSize = ButtonTextSize
  MoreScriptButton.TextWrapped = true
  
  MoreScriptButton.MouseButton1Click:Connect(function()
