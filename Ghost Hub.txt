@@ -200,6 +200,7 @@ FrameCredits.Visible = false
 FrameContent.Visible = true
 FrameShout.Visible = false
 FrameMerch.Visible = false
+FrameSettings.Visible = false
 FrameContent:ClearAllChildren()
 AddGhostScript1()
 end)
