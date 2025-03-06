@@ -1934,6 +1934,8 @@ AddMerch("https://www.roblox.com/catalog/93578649387552/Squid-Game-Shirt", "Squi
 AddMerch("https://www.roblox.com/catalog/98597827787125/Squid-Game-Pants", "Squid Game Pants", 5)
 AddMerch("https://www.roblox.com/catalog/72769340344464/White-Shirt", "White Shirt", 5)
 AddMerch("https://www.roblox.com/catalog/86739754364385/White-Pants", "White Pants", 5)
+AddMerch("https://www.roblox.com/catalog/89257754085052", "Grey Suit w/ Black Vest [+]", 5)
+AddMerch("https://www.roblox.com/catalog/109975340692680", "Grey Suit w/ Black Vest [-]", 5)
 AddMerch("https://www.roblox.com/catalog/137611664036583/gyaru-vamp-gothic-swag-kawaii-soft-fairy-y2k-emo", "gyaru vamp gothic swag kawaii soft fairy y2k emo", 5)
 AddMerch("https://www.roblox.com/catalog/92656115819610/Supreme-Hoodie", "Supreme Hoodie", 5)
 AddMerch("https://www.roblox.com/catalog/82171477191268/Walter-White", "Walter White (+)", 5)
