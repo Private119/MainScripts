@@ -1566,6 +1566,8 @@ RequestMessage("Script","Link Copied")
 setclipboard("https://www.mediafire.com/file/eo7n0kszai8dy2s/Ghost_Obfuscator.apk/file")
 wait()
 setclipboard("https://www.mediafire.com/file/mjyg28n1k5m2dgz/Roblox_Scripts.apk/file")
+wait()
+setclipboard("https://www.mediafire.com/file/f7wvj0grjtg3z42/Hash_Code.apk/file")
 end)
 
 Credits5.MouseButton1Click:connect(function()
