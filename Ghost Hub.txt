@@ -2482,26 +2482,25 @@ end
 
 ---Delete Message Function
 local function DeleteMessage(messageId)
-if "Message"..MessagesTable["Messages"] ~= messageId then
-    local database = Ghosthub_Message_DB_URL..game.Players.LocalPlayer.Name.."/"..messageId..".json"
+if "Message"..MessagesTable["Messages"] ~= ""..messageId then
+    local database = Ghosthub_Message_DB_URL..""..game.Players.LocalPlayer.Name.."/"..messageId..".json"
     local request = request or syn.request
-    local Table = {}
  
     local send = request({
       Url = database,
       Method = "PUT",
       Headers = {["Content-Type"] = "application/json"},
-      Body = game.HttpService:JSONEncode(Table)
+      Body = "null"
     })
  else
-    local database = Ghosthub_Message_DB_URL..game.Players.LocalPlayer.Name..".json"
-    local Table = {}
+    local database = Ghosthub_Message_DB_URL..""..game.Players.LocalPlayer.Name..".json"
+    local request = request or syn.request
     
     local send = request({
       Url = database,
       Method = "PUT",
       Headers = {["Content-Type"] = "application/json"},
-      Body = game.HttpService:JSONEncode(Table)
+      Body = "null"
     })
  end
 end
