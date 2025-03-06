@@ -2349,6 +2349,8 @@ end)
 
 
 ---Show Random Facts Function
+local Robot_Generating_Message = false
+local Current_Robot_Name = nil
 local Current_Robot_Message = nil
 function ShowRandomFacts()
  local RobotImage = Instance.new("ImageButton")
@@ -2408,19 +2410,96 @@ function ShowRandomFacts()
  Generate.Size = UDim2.new(0.2,0,0.2)
  Generate.Font = Enum.Font.Merriweather
  Generate.FontSize = Enum.FontSize.Size14
- Generate.Text = "Generate"
- Generate.TextScaled = false
+ Generate.Text = "Generate Fact"
+ Generate.TextScaled = true
  Generate.TextSize = 24
  Generate.TextWrapped = true
  Generate.Active = true
 
  Generate.MouseButton1Click:Connect(function()
+ if Robot_Generating_Message == true then
+    return
+ end
+ Robot_Generating_Message = true
+ RobotSpeaker.Text = "AI Random Facts Generator"
+ RobotMessage.Text = "Generating.."
  RobotMessage.Text = game.HttpService:JSONDecode(game:HttpGet("https://uselessfacts.jsph.pl/api/v2/facts/random?language=en")).text
  Current_Robot_Message = RobotMessage.Text
+ Current_Robot_Name = RobotSpeaker.Text
+ Robot_Generating_Message = false
  end)
  
- if Current_Robot_Message ~= nil then
+ local Generate2 = Generate:Clone()
+ Generate2.Parent = FrameContent
+ Generate2.Position = UDim2.new(0.55,0,0.7)
+ Generate2.Text = "Generate Cat Fact"
+ 
+ Generate2.MouseButton1Click:Connect(function()
+ if Robot_Generating_Message == true then
+    return
+ end
+ Robot_Generating_Message = true
+ RobotSpeaker.Text = "AI Random Cat Facts Generator"
+ RobotMessage.Text = "Generating.."
+ RobotMessage.Text = game.HttpService:JSONDecode(game:HttpGet("https://catfact.ninja/fact")).fact
+ Current_Robot_Message = RobotMessage.Text
+ Current_Robot_Name = RobotSpeaker.Text
+ Robot_Generating_Message = false
+ end)
+ 
+ local Generate3 = Generate:Clone()
+ Generate3.Parent = FrameContent
+ Generate3.Position = UDim2.new(0.33,0,0.7)
+ Generate3.Text = "Generate Quote"
+ 
+ Generate3.MouseButton1Click:Connect(function()
+ if Robot_Generating_Message == true then
+    return
+ end
+ Robot_Generating_Message = true
+ RobotSpeaker.Text = "AI Random Quotes Generator"
+ RobotMessage.Text = "Generating.."
+ local quote = nil
+ repeat
+   local Message, isGenerated = pcall(function()
+   local QuoteData = game.HttpService:JSONDecode(game:HttpGet("https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en"))
+   quote = QuoteData["quoteText"]
+   if QuoteData["quoteAuthor"] then
+      quote = quote.."\n\nQuote Author: "..QuoteData["quoteAuthor"]
+   end
+   end)
+ until Message and quote ~= Current_Robot_Message
+ RobotMessage.Text = quote
+ Current_Robot_Message = RobotMessage.Text
+ Current_Robot_Name = RobotSpeaker.Text
+ Robot_Generating_Message = false
+ end)
+ 
+ local Generate4 = Generate:Clone()
+ Generate4.Parent = FrameContent
+ Generate4.Position = UDim2.new(0.11,0,0.7)
+ Generate4.Text = "Generate Advice"
+ 
+ Generate4.MouseButton1Click:Connect(function()
+ if Robot_Generating_Message == true then
+    return
+ end
+ Robot_Generating_Message = true
+ RobotSpeaker.Text = "AI Random Advice Generator"
+ RobotMessage.Text = "Generating.."
+ local advice = nil
+ repeat
+   advice = game.HttpService:JSONDecode(game:HttpGet("https://api.adviceslip.com/advice")).slip.advice
+ until advice ~= nil and DetectBadWords(advice) == false
+ RobotMessage.Text = advice
+ Current_Robot_Message = RobotMessage.Text
+ Current_Robot_Name = RobotSpeaker.Text
+ Robot_Generating_Message = false
+ end)
+ 
+ if Current_Robot_Message ~= nil and Current_Robot_Name ~= nil then
     RobotMessage.Text = Current_Robot_Message
+    RobotSpeaker.Text = Current_Robot_Name
  end
 end
 ---
