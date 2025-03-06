@@ -666,7 +666,7 @@ end
 ---Get Saved Settings Data
 local ButtonTextSize = 12
 
-local SettingsData = nil
+local SettingsData = {}
 if FileScriptSupported == true and isfile("Ghosthub/.settings") then
    SettingsData = game:GetService("HttpService"):JSONDecode(readfile("Ghosthub/.settings"))
    
@@ -1818,7 +1818,6 @@ if FileScriptSupported == false then
    Settings_BarrierText.TextWrapped = false
 end
 
-pcall(function()
 if SettingsData["icon_size"] then
    Settings_IconSizeNum.Text = SettingsData["icon_size"]
 end
@@ -1828,7 +1827,6 @@ end
 if SettingsData["text_size"] then
    Settings_TextSizeNum.Text = SettingsData["text_size"]
 end
-end)
 ---
 
 
