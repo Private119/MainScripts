@@ -1945,6 +1945,7 @@ AddMerch("https://www.roblox.com/catalog/78758247529710", "Classic Punk", 5)
 AddMerch("https://www.roblox.com/catalog/125602993311915", "🖤Revenge🖤SALE🖤", 5)
 AddMerch("https://www.roblox.com/catalog/139642423410848", "Kawaii Black Uniform", 5)
 AddMerch("https://www.roblox.com/catalog/92966113718197/Black-Gray-Plaid-School-Skirt", "Black Gray Plaid School Skirt", 5)
+AddMerch("https://www.roblox.com/catalog/122167837589881", "White Socks", 5)
 AddMerch("https://www.roblox.com/catalog/122685893074039/chibi-girl-cute-pants", "chibi girl cute pants", 5)
 AddMerch("https://www.roblox.com/catalog/128282112681974", "Dress halloween - black model dahood vampire", 5)
 
