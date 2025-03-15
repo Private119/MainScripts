@@ -502,7 +502,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainSc
 
 ---Bad Words Detector
 --local Result = DetectBadWords("Message Here") --Use This to Detect if message has a inappropriate words
-loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Detect BadWords"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Detect%20BadWords"))()
 ---
 
 --[[ Encode Decode Function
