@@ -4073,6 +4073,7 @@ function GetMoreScript()
     end
     
     ---Get Pined Script As for Highlights
+    pcall(function()
     if FileScriptSupported == true and MoreScriptSearch.Text == "" and isfile("Ghosthub/Favorites.json") then
        local favorites = game.HttpService:JSONDecode(readfile("Ghosthub/Favorites.json"))
        local favoriteId = favorites["Current_Script_ID"]
@@ -4085,6 +4086,7 @@ function GetMoreScript()
          favoriteId -= 1
        until favoriteId == 0 or SlotUsed == SlotLimit
     end
+    end)
     ---
     
     repeat
