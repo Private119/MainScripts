@@ -514,10 +514,6 @@ Decode("72 105 ","ASCII") --use this method to Decode Message, this results is =
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Encode%20Source"))()
 ---
 
----Request Ask Dialog Function
---RequestAskDialog("Script", "Are you sure do you want to Remove This?", "Cancel", "Remove", "script1 here", "script2 here") --use this method to request askdialog
-loadstring(game:HttpGet('https://pastebin.com/raw/xZPR6bXa'))()
----
 
 --[[ Restricted Users Detector for Ghosthub MoreScript
 local Check = IsRestricted(User ID Here) --use this to check if user is restricted
