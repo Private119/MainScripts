@@ -4060,7 +4060,7 @@ function GetMoreScript()
  else
     MoreScripts = 10000
  end
- local SlotLimit = 2022
+ local SlotLimit = 2053
  local SlotUsed = 0
  MSButtonPosX = 0
  MSButtonPosZ = 0.001
