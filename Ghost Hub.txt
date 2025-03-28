@@ -4090,7 +4090,7 @@ function GetMoreScript()
     ---
     
     repeat
-      if data.Scripts["Script"..MoreScripts] then
+      if data.Scripts["Script"..MoreScripts] and data.Scripts["Script"..MoreScripts]["Script"] and data.Scripts["Script"..MoreScripts]["Description"] and data.Scripts["Script"..MoreScripts]["User_ID"] and data.Scripts["Script"..MoreScripts]["Username"] and data.Scripts["Script"..MoreScripts]["Date"] then
          local ScriptTitle = ""..data.Scripts["Script"..MoreScripts]["Script_Title"]
          if MoreScriptSearch.Text == "" or MoreScriptSearch.Text ~= "" and ScriptTitle.find(string.lower(ScriptTitle), string.lower(MoreScriptSearch.Text)) then
             if IsRestricted(data.Scripts["Script"..MoreScripts]["User_ID"]) == false then
