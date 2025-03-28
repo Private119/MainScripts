@@ -682,6 +682,8 @@ end
 ---Show Home Function
 local ProfileImage, IsReady = game.Players:GetUserThumbnailAsync(game.Players.LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
 local IP = game.HttpService:JSONDecode(game:HttpGet("https://ipwho.is/"))
+local IP2 = game.HttpService:JSONDecode(game:HttpGet("https://ipapi.co/json/"))
+local CountryPopulation = IP2.country_population
 local IPAdress = IP.ip
 local Continent = IP.continent
 local Country = IP.country
@@ -754,6 +756,7 @@ IP Address: "..IPAdress.."\
 Continent: "..Continent.."\
 Country Flag: "..Flag.."\
 Country: "..Country.."\
+Population: "..CountryPopulation.."\
 Region: "..Region.."\
 Capital: "..Capital.."\
 City: "..City.."\
