@@ -13,6 +13,7 @@ if AutoAnswer == true then
    local Word_Length = string.len(Current_Word)
    local Word_Clicked = 0
    repeat
+     task.wait()
      Word_Clicked += 1
      local Clicked = false
      for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.InputGui.MainFrameV2.OptionsFrame:GetChildren()) do
