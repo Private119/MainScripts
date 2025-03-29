@@ -1354,16 +1354,16 @@ AddGameHubButton("Doors But Math","loadstring(game:HttpGet('https://raw.githubus
 AddGameHubButton("MM2 Duels","loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/refs/heads/main/MM2%20Duels'))()")
 AddGameHubButton("Musical Chairs","loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Musical%20Chairs'))()")
 AddGameHubButton("Lava Color Block","loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Lava%20Color%20Block'))()")
-AddGameHubButton("Guess The Drawing",'loadstring(game:HttpGet("https://ghostplayer352.github.io/ScriptAuthorization/"))()Ioad("19fd367930a6d18d7b225a8b9a446ac1")')
+AddGameHubButton("Guess The Drawing",'loadstring(game:HttpGet("https://raw.githubusercontent.com/Private119/MainScripts/refs/heads/main/Guess%20The%20Drawing"))()')
 AddGameHubButton("Closest Answer Wins","loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Closest%20Answer%20Wins'))()")
-AddGameHubButton("Math Answer or Die",'loadstring(game:HttpGet("https://ghostplayer352.github.io/ScriptAuthorization/"))()Ioad("63b601e50bdeb99ad0b9fe75aed7f1f3")')
+AddGameHubButton("Math Answer or Die",'loadstring(game:HttpGet("https://raw.githubusercontent.com/Private119/MainScripts/refs/heads/main/Math%20Answer%20or%20Die"))()')
 AddGameHubButton("Scary Spelling","loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Scary%20Spelling'))()")
 AddGameHubButton("Guess The Drawings!","loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/refs/heads/main/Guess%20The%20Drawings!'))()")
 AddGameHubButton("Dance or Die","loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Dance%20or%20Die'))()")
-AddGameHubButton("Words or Die",'loadstring(game:HttpGet("https://ghostplayer352.github.io/ScriptAuthorization/"))()Ioad("9645c28a67e031371e4ca2e02f4f3b09")')
-AddGameHubButton("Math Murder",'loadstring(game:HttpGet("https://ghostplayer352.github.io/ScriptAuthorization/"))()Ioad("bee8432b10b76727a88e5815452851eb")')
-AddGameHubButton("Jack Of Hearts",'loadstring(game:HttpGet("https://ghostplayer352.github.io/ScriptAuthorization/"))()Ioad("b80d7e3c7537171e69f28aa0d5b7aff4")')
-AddGameHubButton("Dodgeball Legends",'loadstring(game:HttpGet("https://ghostplayer352.github.io/ScriptAuthorization/"))()Ioad("920b7aa3d98882b4062dcf5e84cd73c7")')
+AddGameHubButton("Words or Die",'loadstring(game:HttpGet("https://raw.githubusercontent.com/Private119/MainScripts/refs/heads/main/Words%20or%20Die.txt"))()')
+AddGameHubButton("Math Murder",'loadstring(game:HttpGet("https://raw.githubusercontent.com/Private119/MainScripts/refs/heads/main/Math%20Murder"))()')
+AddGameHubButton("Jack Of Hearts",'loadstring(game:HttpGet("https://raw.githubusercontent.com/Private119/MainScripts/refs/heads/main/Jack%20Of%20Hearts"))()')
+AddGameHubButton("Dodgeball Legends",'loadstring(game:HttpGet("https://raw.githubusercontent.com/Private119/MainScripts/refs/heads/main/Dodgeball%20Legends"))()')
 ---
 
 
